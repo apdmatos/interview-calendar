@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/interview-calendar.iml" filepath="$PROJECT_DIR$/.idea/interview-calendar.iml" />
       <module fileurl="file://$PROJECT_DIR$/calendar-api/src/main/main.iml" filepath="$PROJECT_DIR$/calendar-api/src/main/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/calendar-api/src/test/test1.iml" filepath="$PROJECT_DIR$/calendar-api/src/test/test1.iml" />
     </modules>

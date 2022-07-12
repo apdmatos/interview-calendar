@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController
 class CalendarController {
     @GetMapping("/")
     fun hello(): String {
-        return "hello from controller"
+        return "hello from server"
     }
 }
