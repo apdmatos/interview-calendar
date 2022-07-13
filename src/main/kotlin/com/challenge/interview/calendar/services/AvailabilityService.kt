@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service
 class AvailabilityService
     @Autowired
     constructor (private val repository: AvailabilityRepository) {
-
-    private val log = LoggerFactory.getLogger(this.javaClass.name)
-
     fun getAvailabilities(candidateId: String, interviewerIds: List<String>): List<TimeInterval> {
         val candidateAvailabilities = repository.findByCalendarIdAndRole(candidateId, Role.CANDIDATE.toString());
         val interviewerAvailabilities = interviewerIds.map {
