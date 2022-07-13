@@ -50,45 +50,6 @@ class MainExceptionHandler {
         return responseBody
     }
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentNotValidException::class)
-//    fun handleArgumentNotValid(ex: MethodArgumentNotValidException): ErrorResponse {
-//        val missingErrorFields = ex.bindingResult.fieldErrors
-//            .filter { error -> error.rejectedValue == null }
-//            .map { error -> error.field }.toSet()
-//        val invalidErrorFields = ex.bindingResult.fieldErrors
-//            .filter { error -> error.rejectedValue != null }
-//            .map { error -> error.field }.toSet()
-//
-//        val error = ex.bindingResult
-//            .allErrors
-//            .map { error -> error.defaultMessage ?: "" }
-//            .first();
-//        var responseBody = ErrorResponse("Invalid data $error")
-//
-//        if (!invalidErrorFields.isEmpty()) {
-//            responseBody = ErrorResponse("Invalid data ${invalidErrorFields.joinToString(", ")}")
-//        }
-//
-//        if (!missingErrorFields.isEmpty()) {
-//            responseBody = ErrorResponse("Missing mandatory attributes $missingErrorFields")
-//        }
-//
-//        return responseBody
-//    }
-
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(HttpMessageConversionException::class)
-//    fun handleArgumentNotValid(ex: HttpMessageConversionException): ErrorResponse {
-//        var responseBody = ErrorResponse("Invalid request")
-//        if (ex.cause is InvalidDefinitionException) {
-//            val cause = ex.cause as InvalidDefinitionException
-//            val field = cause.message!!.split(", parameter ")[1].split("\n")[0]
-//            responseBody = ErrorResponse("Missing mandatory attributes field $field")
-//        }
-//        return responseBody
-//    }
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentTypeMismatchException::class)
     fun handleArgumentTypeMismatch(ex: MethodArgumentTypeMismatchException): ErrorResponse {
@@ -127,16 +88,6 @@ class MainExceptionHandler {
         }
         return ErrorResponse(ex.message!!);
     }
-
-/*    @ExceptionHandler(UndeclaredThrowableException::class)
-    fun handleUndeclaredException(response: HttpServletResponse, ex: UndeclaredThrowableException): ErrorResponse? {
-        return if(ex.cause is HttpResponseException){
-            handleHttpResponseException(response, ex.cause as HttpResponseException )
-        } else {
-            response.status = HttpStatus.INTERNAL_SERVER_ERROR.value()
-            handleInternalError(ex)
-        }
-    }*/
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception::class)
