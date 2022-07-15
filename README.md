@@ -14,9 +14,9 @@ The app is running on port 8080
 
 ## API documentation
 
-### Get a calendar
+### Get calendar availabilities
 ```
-GET /calendars/{role}/{id}
+GET /calendars/{role}/{id}/availabilities
 ```
 
 sample response:
