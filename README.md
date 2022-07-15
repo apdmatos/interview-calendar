@@ -75,7 +75,7 @@ sample response:
 
 ## Considerations
 
-The dates intersection are being done in the database because
+The dates intersection are not being done in the database because
 1. We will not have many records per user
 2. It's much easier to do it in the code than writing a extra complex database query
 3. It's easier to write unit tests
